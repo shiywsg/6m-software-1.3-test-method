@@ -16,7 +16,6 @@ const bookTitle = ["Lord of the Rings", "Programming for Dummies", "Introduction
 let booksObj = {}; 
 
 function convert(keyArr, valueArr){
-    
     // Add code here
     /*
         Tips:
@@ -25,16 +24,30 @@ function convert(keyArr, valueArr){
         - Step 3: Within the for-loop, add the key and value to the local scoped object.
         - Step 4: Write a return statement to return the object literal after the for-loop code block.
     */
+for (let index = 0; index < keyArr.length; index++) {
+    Object.defineProperty(booksObj, keyArr[index], {
+        value : valueArr[index],
+        writable : true,
+        enumerable : true,
+        configurable : true
+    });
+    // console.log(keyArr[index], valueArr[index]);
+    // console.log(booksObj);
+    }
+    return booksObj;
 }
+
+//booksObj = convert(bookIdArr, bookTitle);
+//console.log(booksObj)
 
 function printByKey(key){
     console.log(booksObj[key]);
-}
+} 
 
-booksObj = convert(bookIdArr, bookTitle);
+booksObj = convert(bookIdArr, bookTitle); 
 printByKey("NLB2"); // prints "Progamming for Dummies"
 
 // Ignore the code below this line
 module.exports = {
     convert
-}
+} 
